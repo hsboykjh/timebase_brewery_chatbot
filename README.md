@@ -1,5 +1,5 @@
 # Timebase brewery
-This project is building simple chatbot system to recommend beer to users.
+This project is building simple Angular5 chatbot application to recommend beer to users.
 
 When application is launched, Chatbo checks date/time/day info and asks customers specific questions.
 
@@ -7,8 +7,12 @@ These collected information is used to make conditions for beer recommendation.
  
 ( This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.0-rc.0. )
 
+## Prerequisites
+1. Npm
+2. Angular Cli
+
 ## Run application
-1. Download source code or clone git repository.
+1. Download source code or clone git repository ( https://github.com/hsboykjh/timebase_brewery_chatbot.git ).
 2. `$ npm install`
 3. `$ ng serve`
 4. Navigate to `http://localhost:4200`.
@@ -36,6 +40,8 @@ Ask a question to users and match query conditions based on the answer.
 3. Sun : No query conditions
 
 ## Api query string references
+https://punkapi.com/documentation/v2
+
 PARAM	TYPE	DETAILS
 
 abv_gt	number	Returns all beers with ABV greater than the supplied number
