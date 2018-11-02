@@ -1,0 +1,58 @@
+.chat {
+    margin : 40px;
+    border: solid 1px #eee;
+}
+.chat .header {
+    text-align: center;
+    background-color: #4286f4;
+    padding: 20px;
+    color: #fff;
+    font-size: 20px;
+}
+.chat .body {
+    overflow:scroll;
+    min-height : 500px;
+}
+.history .context {
+    display:inline-block;
+    margin: 5px;
+    padding : 10px 20px;
+    border-radius : 10px;
+    border : solid 1px #eee;
+    background-color: #fff;
+}
+.beer-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.beer-list-header {
+    padding: 20px;
+    background-color: #4286f4;
+    color: white;
+    margin-bottom: 10px;
+    border-radius : 10px;
+}
+.beer-list-body {
+    padding: 10px 20px 10px 20px;
+    margin-bottom: 10px;
+    border-radius : 10px;
+    border : solid 1px #eee;
+}
+.section {
+    margin-bottom: 10px;
+}
+
+.thumb {
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.thumb img {
+    width: 100%;
+}
+
+@media (max-width: 767px) {
+    .chat {
+        margin: 10px 0 10px 0;
+    }
+}

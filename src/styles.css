@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+a {
+    cursor: pointer;
+}
+.container-fluid {
+    max-width: 940px;
+}
+
+@media (max-width: 767px) {
+    .container-fluid {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}

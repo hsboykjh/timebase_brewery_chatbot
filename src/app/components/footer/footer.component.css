@@ -1,0 +1,29 @@
+#footer {
+    position: relative;
+    /*min-height: 150px;*/
+    background-color: #113254;
+}
+
+#footer .main {
+    color: #ffffff;
+    padding: 10px;
+}
+
+#footer .main .logo {
+    width: 300px;
+}
+
+#footer .main .text {
+    position: absolute;
+    bottom: 0;
+    color: #b8c1cc;
+    padding: 10px;
+    font-size: 18px;
+}
+
+#footer .main .text .sub-text {
+    margin-left: 30px;
+    margin-right: 30px;
+    font-size: 14px;
+}
+

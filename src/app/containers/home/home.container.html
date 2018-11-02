@@ -1,0 +1,141 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3 col-xs-12">
+            <div class="chat">
+                <div class="header">
+                    Timebase brewery
+                </div>
+                <div class="body">
+                    <div *ngFor="let chat of chatHistory;" class="col-sm-12">
+                        <div class="history">
+                            <div *ngIf="chat?.id === 'bot'" class="context">
+                                {{chat?.text}}
+                            </div>
+                            <div *ngIf="chat?.type === 'question' && chat?.completed === false" class="context pull-right">
+                                <a (click)="createAnswer('yes');chat.completed = true;showDetailModal()">YES</a> / <a (click)="createAnswer('no');chat.completed = true;">NO</a>
+                            </div>
+                            <div *ngIf="chat?.id !== 'bot'" class="context pull-right">
+                                {{chat?.text}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div *ngIf="beerInfoList?.length === 0" class="beer-container">
+                            <div class="beer-list-header">
+                                Sorry, we cannot find any items
+                            </div>
+                        </div>
+                        <div *ngIf="beerInfoList?.length > 0" class="beer-container">
+                            <div class="beer-list-header">
+                                We found {{beerInfoList.length}} items
+                            </div>
+                            <div *ngFor="let beer of beerInfoList;let row=index" class="beer-list-body">
+                                <a (click)="selectBeer(beer)">{{row+1}}. {{beer.name}}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div bsModal #detailModal="bs-modal" class="modal fade" tabindex="-1"
+     role="dialog" aria-labelledby="dialog-child-name">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 id="dialog-child-name" class="modal-title pull-left">{{selectedBeerInfo?.name}}</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="hideDetailModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="thumb" [ngStyle]="{'background-image':'url('+selectedBeerInfo?.image_url+')'}">
+                            <img src="assets/images/5-8.png" alt="">
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="section">
+                            <h4>Specifications</h4>
+                            <div>
+                                <strong>Abv : </strong>{{selectedBeerInfo?.abv}}
+                            </div>
+                            <div>
+                                <strong>Ph : </strong>{{selectedBeerInfo?.ph}}
+                            </div>
+                            <div>
+                                <strong>Ebc : </strong>{{selectedBeerInfo?.ebc}}
+                            </div>
+                            <div>
+                                <strong>Attenuation level : </strong>{{selectedBeerInfo?.attenuation_level}}
+                            </div>
+                            <div>
+                                <strong>Ibu : </strong>{{selectedBeerInfo?.ibu}}
+                            </div>
+                            <div>
+                                <strong>Srm : </strong>{{selectedBeerInfo?.srm}}
+                            </div>
+                            <div>
+                                <strong>Target fg : </strong>{{selectedBeerInfo?.target_fg}}
+                            </div>
+                            <div>
+                                <strong>Target og : </strong>{{selectedBeerInfo?.target_og}}
+                            </div>
+                            <div>
+                                <strong>Boil volume : </strong>{{selectedBeerInfo?.boil_volume?.value}} {{selectedBeerInfo?.boil_volume?.unit}}
+                            </div>
+                            <div>
+                                <strong>Volume : </strong>{{selectedBeerInfo?.volume?.value}} {{selectedBeerInfo?.volume?.unit}}
+                            </div>
+                            <div>
+                                <strong>Tagline : </strong>{{selectedBeerInfo?.tagline}}
+                            </div>
+                            <div>
+                                <strong>First brewed : </strong>{{selectedBeerInfo?.first_brewed}}
+                            </div>
+                        </div>
+                        <div class="section">
+                            <strong>Brewers tips</strong>
+                            <p>{{selectedBeerInfo?.brewers_tips}}</p>
+                        </div>
+                        <div class="section">
+                            <strong>Description</strong>
+                            <p>{{selectedBeerInfo?.description}}</p>
+                        </div>
+                        <div class="section">
+                            <h4>Ingredients</h4>
+                            <strong>Hops</strong>
+                            <div *ngFor="let hop of selectedBeerInfo?.ingredients?.hops;let row=index;">
+                                {{row+1}}. {{hop?.name}} ( {{hop?.amount?.value}} {{hop?.amount?.unit}} ) Add : {{hop?.add}}, Attribute : {{hop?.attribute}}
+                            </div>
+                            <strong>Malt</strong>
+                            <div *ngFor="let item of selectedBeerInfo?.ingredients?.malt;let row=index;">
+                                {{row+1}}. {{item?.name}} ( {{item?.amount?.value}} {{item?.amount?.unit}} )
+                            </div>
+                            <strong>Yeast</strong>
+                            <p>{{selectedBeerInfo?.ingredients?.yeast}}</p>
+                        </div>
+                        <div class="section">
+                            <h4>Method</h4>
+                            <strong>Fermentation temp : </strong>{{selectedBeerInfo?.method?.fermentation?.temp?.value}} {{selectedBeerInfo?.method?.fermentation?.temp?.unit}}
+                            <div *ngFor="let mesh of selectedBeerInfo?.method?.mesh_temp;let row=index">
+                                {{row+1}}. Duration : {{mesh.duration}} - {{mesh?.temp?.value}} {{mesh?.temp?.unit}}
+                            </div>
+                        </div>
+                        <div class="section">
+                            <h4>Food pairing</h4>
+                            <div *ngFor="let food of selectedBeerInfo?.food_pairing;let row=index">
+                                {{row+1}}. {{food}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-default" (click)="hideDetailModal()" >close</a>
+            </div>
+        </div>
+    </div>
+</div>

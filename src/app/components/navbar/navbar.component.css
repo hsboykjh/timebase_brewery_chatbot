@@ -1,0 +1,22 @@
+#header {
+    position: relative;
+    /*min-height: 150px;*/
+    background-color: #113254;
+}
+
+#header .main {
+    color: #ffffff;
+    padding: 10px;
+}
+
+#header .main .logo {
+    width: 300px;
+}
+
+#header .main .text {
+    position: absolute;
+    bottom: 0;
+    color: #b8c1cc;
+    padding: 10px;
+    font-size: 18px;
+}
